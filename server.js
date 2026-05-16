@@ -157,18 +157,11 @@ for (const name in networkInterfaces) {
   }
 }
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`
-╔══════════════════════════════════════════════════════════╗
-║        🎓 Rased Attendance System - Secure Mode          ║
-╠══════════════════════════════════════════════════════════╣
-║ 🚀 Port: ${PORT}                                            ║
-║ 🔗 Local: http://localhost:${PORT}/api                    ║
-║ 📱 Network: http://${localIp}:${PORT}/api                   ║
-║ 🛡️  Redis: Active & Monitoring                              ║
-╚══════════════════════════════════════════════════════════╝
-  `);
-});
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 process.on('SIGINT', () => {
   console.log('🛑 Shutting down server...');
