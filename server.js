@@ -178,4 +178,4 @@ process.on('SIGINT', () => {
   });
 });
 
-module.exports = { app, server, io };
+module.exports = app;
