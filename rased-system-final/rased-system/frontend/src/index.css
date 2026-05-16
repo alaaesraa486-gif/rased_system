@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================
+   FONTS & BASE
+============================= */
+
+@layer base {
+  :root { color-scheme: light; }
+  .dark { color-scheme: dark; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased;
+    font-family: 'IBM Plex Sans Arabic', 'Segoe UI', system-ui, sans-serif;
+  }
+  * { @apply transition-colors duration-150; }
+}
+
+/* =============================
+   COMPONENT CLASSES
+============================= */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-black text-sm transition-all duration-200 active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply bg-blue-800 text-white hover:bg-blue-900 shadow-lg shadow-blue-200/50 dark:shadow-blue-900/50;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-800 dark:hover:text-slate-200;
+  }
+  .card {
+    @apply bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm;
+  }
+  .input-field {
+    @apply w-full p-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl outline-none focus:ring-2 ring-blue-500/40 dark:ring-blue-500/40 focus:border-blue-700 dark:focus:border-blue-500 transition-all font-bold text-sm text-slate-800 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider;
+  }
+  .badge-success { @apply bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400; }
+  .badge-warning { @apply bg-amber-100  dark:bg-amber-900/30  text-amber-700  dark:text-amber-400;  }
+  .badge-danger  { @apply bg-red-100    dark:bg-red-900/30    text-red-700    dark:text-red-400;    }
+  .badge-info    { @apply bg-blue-100   dark:bg-blue-900/30   text-blue-700   dark:text-blue-400;   }
+}
+
+/* ================================================
+   LIGHT MODE
+   القاعدة: الخلفيات indigo-tinted جميلة،
+   لكن النصوص تفضل داكنة وواضحة تماماً.
+   بس الـ muted text (slate-400/500) يبقى
+   رمادي داكن مش بنفسجي فاتح.
+================================================ */
+
+/* ── Page background ── */
+html:not(.dark) body {
+  background: linear-gradient(135deg, #eef2ff 0%, #f0f9ff 55%, #faf5ff 100%);
+  background-attachment: fixed;
+  color: #0f172a; /* slate-900 أصلي */
+}
+
+/* ── Backgrounds ── */
+html:not(.dark) .bg-slate-50 {
+  background-color: #f1f5ff !important;
+}
+html:not(.dark) .bg-slate-100,
+html:not(.dark) .bg-gray-100 {
+  background-color: #e8eeff !important;
+}
+html:not(.dark) .bg-white {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-white\/50,
+html:not(.dark) .bg-white\/70,
+html:not(.dark) .bg-white\/80 {
+  background-color: rgba(255,255,255,.88) !important;
+}
+
+/* ── Borders ── */
+html:not(.dark) .border-slate-200,
+html:not(.dark) .border-slate-200\/60,
+html:not(.dark) .border-slate-200\/40 {
+  border-color: rgba(99,102,241,.22) !important;
+}
+html:not(.dark) .border-slate-100 {
+  border-color: rgba(99,102,241,.12) !important;
+}
+
+/* ── TEXT — داكن وواضح دايماً ──
+   slate-900 → أسود تقريباً
+   slate-800 → داكن جداً
+   slate-700 → داكن
+   slate-600 → متوسط داكن
+   slate-500 → رمادي متوسط (مش بنفسجي!)
+   slate-400 → رمادي فاتح لكن مقروء
+   slate-300 → للعناصر الثانوية جداً
+*/
+html:not(.dark) .text-slate-900 { color: #0f172a !important; }
+html:not(.dark) .text-slate-800 { color: #1e293b !important; }
+html:not(.dark) .text-slate-700 { color: #334155 !important; }
+html:not(.dark) .text-slate-600 { color: #475569 !important; }
+html:not(.dark) .text-slate-500 { color: #64748b !important; }
+html:not(.dark) .text-slate-400 { color: #94a3b8 !important; }
+html:not(.dark) .text-slate-300 { color: #b0bcd0 !important; }
+
+/* ── Header ── */
+html:not(.dark) header {
+  background: rgba(255,255,255,.92) !important;
+  border-bottom-color: rgba(99,102,241,.14) !important;
+  box-shadow: 0 1px 20px rgba(99,102,241,.07);
+}
+
+/* ── Page sub-header ── */
+html:not(.dark) .bg-white\/50.dark\:bg-slate-900\/50 {
+  background: rgba(255,255,255,.6) !important;
+  border-bottom-color: rgba(99,102,241,.1) !important;
+}
+
+/* ── Cards ── */
+html:not(.dark) .bg-white.dark\:bg-slate-900.rounded-2xl,
+html:not(.dark) .bg-white.rounded-2xl {
+  background: #ffffff !important;
+  border-color: rgba(99,102,241,.15) !important;
+  box-shadow: 0 2px 12px rgba(99,102,241,.06), 0 1px 3px rgba(99,102,241,.04);
+}
+
+/* ── Inputs ── */
+html:not(.dark) input {
+  background-color: #f8f9ff !important;
+  border-color: rgba(99,102,241,.2) !important;
+  color: #0f172a !important;
+}
+html:not(.dark) input::placeholder {
+  color: #94a3b8 !important;
+}
+html:not(.dark) input:focus {
+  background-color: #ffffff !important;
+  border-color: #6366f1 !important;
+}
+
+/* ── User info pill ── */
+html:not(.dark) .bg-slate-50.dark\:bg-slate-800\/50 {
+  background-color: #eef2ff !important;
+  border-color: rgba(99,102,241,.16) !important;
+}
+
+/* ── Theme toggle button ── */
+html:not(.dark) .bg-slate-100.dark\:bg-slate-800 {
+  background-color: #e0e7ff !important;
+}
+
+/* ── Date pill ── */
+html:not(.dark) .bg-white.dark\:bg-slate-800.px-3 {
+  background-color: #f8f9ff !important;
+  border-color: rgba(99,102,241,.16) !important;
+}
+
+/* ── Table ── */
+html:not(.dark) thead tr {
+  background: linear-gradient(90deg, #eef2ff, #f0f9ff) !important;
+}
+html:not(.dark) thead th {
+  color: #64748b !important; /* رمادي داكن مقروء */
+}
+html:not(.dark) tbody tr:hover {
+  background-color: rgba(238,242,255,.6) !important;
+}
+html:not(.dark) .divide-slate-100 > * + *,
+html:not(.dark) .divide-slate-50  > * + * {
+  border-color: rgba(99,102,241,.08) !important;
+}
+
+/* ── Skeleton loader ── */
+html:not(.dark) .from-gray-100 { --tw-gradient-from: #e0e7ff; }
+html:not(.dark) .via-gray-200  { --tw-gradient-via:  #c7d2fe; }
+html:not(.dark) .to-gray-100   { --tw-gradient-to:   #e0e7ff; }
+
+/* ── Confirm modal ── */
+html:not(.dark) .bg-gray-900\/70 {
+  background-color: rgba(15,23,42,.5) !important;
+}
+html:not(.dark) .bg-gray-100.text-gray-600 {
+  background-color: #eef2ff !important;
+  color: #4338ca !important;
+}
+html:not(.dark) .bg-gray-100.text-gray-600:hover {
+  background-color: #e0e7ff !important;
+}
+html:not(.dark) .text-gray-900 { color: #0f172a !important; }
+html:not(.dark) .text-gray-500 { color: #64748b !important; }
+html:not(.dark) .text-gray-600 { color: #475569 !important; }
+
+/* ── Login card shadow ── */
+html:not(.dark) .shadow-slate-300\/50 {
+  box-shadow: 0 25px 60px rgba(99,102,241,.12) !important;
+}
+
+/* ── Scrollbar ── */
+html:not(.dark) ::-webkit-scrollbar-track { background: #eef2ff; }
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #c7d2fe; border-radius: 9999px; }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #a5b4fc; }
+html.dark ::-webkit-scrollbar-track { background: #1e293b; }
+html.dark ::-webkit-scrollbar-thumb { background: #475569; border-radius: 9999px; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+/* =============================
+   ANIMATIONS
+============================= */
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInFromBottom {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.animate-in { animation-fill-mode: both; animation-duration: 300ms; }
+.fade-in                { animation-name: fadeIn; }
+.zoom-in                { animation-name: zoomIn; }
+.zoom-in-95             { animation-name: zoomIn; }
+.slide-in-from-top-4    { animation-name: slideInFromTop; }
+.slide-in-from-bottom-4 { animation-name: slideInFromBottom; }
+.slide-in-from-right-4  { animation-name: slideInFromRight; }
+.shake                  { animation-name: shake; animation-duration: 400ms; }
+
+.duration-200 { animation-duration: 200ms; }
+.duration-300 { animation-duration: 300ms; }
+.duration-400 { animation-duration: 400ms; }
+.duration-500 { animation-duration: 500ms; }
+
+/* ── QR Scanner corners ── */
+.scanner-corner-tl { @apply absolute top-3 right-3    w-8 h-8 border-t-4 border-r-4 border-blue-700 rounded-tr-xl pointer-events-none; }
+.scanner-corner-tr { @apply absolute top-3 left-3     w-8 h-8 border-t-4 border-l-4 border-blue-700 rounded-tl-xl pointer-events-none; }
+.scanner-corner-bl { @apply absolute bottom-3 right-3  w-8 h-8 border-b-4 border-r-4 border-blue-700 rounded-br-xl pointer-events-none; }
+.scanner-corner-br { @apply absolute bottom-3 left-3   w-8 h-8 border-b-4 border-l-4 border-blue-700 rounded-bl-xl pointer-events-none; }
+
+/* ── Attendance feed item ── */
+.attendance-item {
+  @apply flex items-center gap-3 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/40 rounded-2xl;
+  animation: slideInFromRight 0.3s ease-out both;
+}
+
+/* ── Misc ── */
+tbody tr { @apply transition-colors duration-100; }
+
+:focus-visible {
+  @apply outline-none ring-2 ring-blue-700 ring-offset-2 dark:ring-offset-slate-900;
+}
+
+[dir="rtl"] .font-mono {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/40 dark:border-slate-700/40;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent;
+}
